@@ -10,7 +10,7 @@ let publicPath = './';
 module.exports = {
     publicPath: publicPath,
     lintOnSave: true,
-    productionSourceMap: false,
+    productionSourceMap: true,
     chainWebpack: config => {
         // 忽略的打包文件
         config.externals({

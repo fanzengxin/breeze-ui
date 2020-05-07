@@ -1,7 +1,6 @@
 import {fetchList} from '@/api/admin/dict'
 
 var validateDictCode = (rule, value, callback) => {
-    console.log(rule);
     if (window.boxType === 'edit') {
         callback();
     }
@@ -52,6 +51,17 @@ export const tableOption = {
             required: true,
             message: '请输入字典编码',
             trigger: 'blur'
+        }]
+    }, {
+        label: '字典值类型',
+        prop: 'VALUE_TYPE',
+        type: 'radio',
+        dicData: [{
+            label: '数字',
+            value: 0
+        }, {
+            label: '文本',
+            value: 1
         }]
     }, {
         label: '排序',

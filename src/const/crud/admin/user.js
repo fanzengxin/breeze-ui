@@ -1,4 +1,5 @@
 import {fetchList} from '@/api/admin/user'
+import {getStoreDict} from '@/util/store'
 
 var validateUserId = (rule, value, callback) => {
     if (window.boxType === 'edit') {
@@ -34,8 +35,8 @@ export const tableOption = {
         prop: 'ID',
         span: 24,
         hide: true,
-        editDisabled: true,
-        addDisplay: false
+        addDisplay: false,
+        editDisplay: false
     }, {
         fixed: true,
         label: '用户名',
@@ -123,27 +124,29 @@ export const tableOption = {
             trigger: 'blur'
         }]
     }, {
+        label: '性别',
+        prop: 'GENDER',
+        type: 'select',
+        span: 12,
+        border: true,
+        hide: true,
+        // 动态从后台获取数据字典
+        dicUrl: '/admin/dict',
+        dicQuery: {
+            dictCode: "SYS_GENDER"
+        }
+    }, {
         label: '状态',
         prop: 'STATUS',
         type: 'switch',
         slot: true,
         border: true,
-        span: 24,
+        span: 12,
         width: 80,
         value: 1,
         addDisplay: false,
-        rules: [{
-            required: true,
-            message: '请选择状态',
-            trigger: 'blur'
-        }],
-        dicData: [{
-            label: '禁用',
-            value: 0
-        }, {
-            label: '启用',
-            value: 1
-        }]
+        // 从前端缓存中获取数据字典
+        dicData: getStoreDict('SYS_USER_STATUS')
     }, {
         width: 150,
         label: '创建时间',

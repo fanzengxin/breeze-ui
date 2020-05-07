@@ -42,7 +42,6 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(res => {
     NProgress.done();
     const status = Number(res.status) || 200;
-    // const result = JSON.parse(res.data);
     const result = res.data;
     const message = result.msg || errorCode[status] || errorCode['default'];
     if (result.code === 20005) {

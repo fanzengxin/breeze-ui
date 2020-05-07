@@ -6,7 +6,29 @@ export function fetchList(query) {
         url: '/admin/dict/page',
         method: 'get',
         params: query
-    })
+    });
+}
+
+export function getList(query) {
+    return request({
+        url: '/admin/dict',
+        method: 'get',
+        params: query
+    });
+}
+
+export function getAllDict() {
+    return request({
+        url: '/admin/dict/all',
+        method: 'get'
+    });
+}
+
+export function checkLastUpdateTime() {
+    return request({
+        url: '/admin/dict/check',
+        method: 'get'
+    });
 }
 
 export function addObj(obj) {
@@ -16,7 +38,7 @@ export function addObj(obj) {
         data: {
             data: cleanPostData(obj)
         }
-    })
+    });
 }
 
 export function getObj(id) {

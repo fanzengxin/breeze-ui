@@ -35,8 +35,6 @@
     import top from './top/'
     import sidebar from './sidebar/'
     import admin from '@/util/admin';
-    import {validatenull} from '@/util/validate';
-    import {getStore} from '@/util/store.js';
 
     export default {
         components: {
@@ -75,6 +73,7 @@
                         this.$store.commit('SET_SCREEN', admin.getScreen())
                     }, 0);
                 }
+                this.$store.dispatch("GetAllDicts");
             },
         }
     }

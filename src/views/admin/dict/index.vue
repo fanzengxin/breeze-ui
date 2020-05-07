@@ -45,7 +45,6 @@
                                :permission="permissionList"
                                :before-open="handleOpenBefore"
                                v-model="subForm"
-                               @on-load="getList"
                                @refresh-change="refreshList"
                                @row-update="handleUpdate"
                                @row-save="handleSubSave"
@@ -87,6 +86,7 @@
                 dictManager_btn_permission: false,
                 dialogDictValueVisible: false,
                 dictParent: '0',
+                dictValueType: 0,
                 form: {},
                 subForm: {}
             };
@@ -184,6 +184,7 @@
              *
              **/
             handleUpdate: function (row, index, done) {
+                row.value_type = this.dictValueType;
                 putObj(row).then(() => {
                     this.$message({
                         showClose: true,
@@ -218,6 +219,7 @@
             handleSubSave: function (row, done) {
                 row.dict_type = 1;
                 row.dict_parent = this.dictParent;
+                row.value_type = this.dictValueType;
                 this.handleDictSave(row, done);
             },
             handleDictSave: function (row, done) {
@@ -237,7 +239,9 @@
             },
             handleDictValueShow(row) {
                 this.dictParent = row.DICT_CODE;
+                this.dictValueType = row.VALUE_TYPE;
                 this.dialogDictValueVisible = true;
+                this.getList(this.subPage, this.subForm);
             },
             searchChange(form, done) {
                 if (this.dialogDictValueVisible) {

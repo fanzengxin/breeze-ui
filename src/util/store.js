@@ -20,10 +20,10 @@ export const setStore = (params = {}) => {
         window.localStorage.setItem(name, JSON.stringify(obj));
     }
 }
+
 /**
  * 获取localStorage
  */
-
 export const getStore = (params = {}) => {
     let {name, debug} = params;
     name = keyName + name;
@@ -53,6 +53,21 @@ export const getStore = (params = {}) => {
         content = obj.content;
     }
     return content;
+}
+
+/**
+ * 获取缓存中的数据字典值
+ *
+ * @param params
+ * @returns {*[]|any}
+ */
+export const getStoreDict = (title) => {
+    const dict = getStore({name: 'SYS_STORE_DICT_DATAS'});
+    if (dict) {
+        return JSON.parse(dict[title]);
+    } else {
+        return [];
+    }
 }
 
 /**
