@@ -7,17 +7,17 @@ let iconfontUrl = `//at.alicdn.com/t/font_$key.css`;
 let codeUrl = `${window.location.origin}/code`;
 let actUrl = `${window.location.origin}/act/modeler.html?modelId=`;
 if (env.NODE_ENV == 'development') {
-    // 开发环境
+  // 开发环境
 } else if (env.NODE_ENV == 'production') {
-    // 生产环境
+  // 生产环境
 } else if (env.NODE_ENV == 'test') {
-    // 测试环境
+  // 测试环境
 }
 export {
-    baseUrl,
-    actUrl,
-    iconfontUrl,
-    iconfontVersion,
-    codeUrl,
-    env
+  baseUrl,
+  actUrl,
+  iconfontUrl,
+  iconfontVersion,
+  codeUrl,
+  env
 }

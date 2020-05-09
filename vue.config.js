@@ -8,49 +8,49 @@ const codeUrl = 'http://localhost/tools/service';
 // 基础路径，发布前修改这里,当前配置打包出来的资源都是相对路径
 let publicPath = './';
 module.exports = {
-    publicPath: publicPath,
-    lintOnSave: true,
-    productionSourceMap: true,
-    chainWebpack: config => {
-        // 忽略的打包文件
-        config.externals({
-            'axios': 'axios'
-        });
-        const entry = config.entry('app');
-        entry.add('babel-polyfill').end();
-        entry.add('classlist-polyfill').end();
-    },
-    // 配置转发代理
-    devServer: {
-        proxy: {
-            '/auth': {
-                target: adminUrl,
-                ws: true,
-                pathRewrite: {
-                    '^/auth': '/auth'
-                }
-            },
-            '/admin': {
-                target: adminUrl,
-                ws: true,
-                pathRewrite: {
-                    '^/admin': '/'
-                }
-            },
-            '/tools': {
-                target: codeUrl,
-                ws: true,
-                pathRewrite: {
-                    '^/tools': '/'
-                }
-            },
-            '/': {
-                target: adminUrl,
-                ws: true,
-                pathRewrite: {
-                    '^/': '/'
-                }
-            }
+  publicPath: publicPath,
+  lintOnSave: true,
+  productionSourceMap: true,
+  chainWebpack: config => {
+    // 忽略的打包文件
+    config.externals({
+      'axios': 'axios'
+    });
+    const entry = config.entry('app');
+    entry.add('babel-polyfill').end();
+    entry.add('classlist-polyfill').end();
+  },
+  // 配置转发代理
+  devServer: {
+    proxy: {
+      '/auth': {
+        target: adminUrl,
+        ws: true,
+        pathRewrite: {
+          '^/auth': '/auth'
         }
+      },
+      '/admin': {
+        target: adminUrl,
+        ws: true,
+        pathRewrite: {
+          '^/admin': '/'
+        }
+      },
+      '/tools': {
+        target: codeUrl,
+        ws: true,
+        pathRewrite: {
+          '^/tools': '/'
+        }
+      },
+      '/': {
+        target: adminUrl,
+        ws: true,
+        pathRewrite: {
+          '^/': '/'
+        }
+      }
     }
+  }
 }

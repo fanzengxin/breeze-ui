@@ -24,8 +24,8 @@ Vue.use(VueAxios, axios);
 Vue.use(router);
 
 Vue.use(ElementUI, {
-    size: 'medium',
-    menuType: 'text'
+  size: 'medium',
+  menuType: 'text'
 });
 
 Vue.use(Avue);
@@ -34,21 +34,21 @@ Vue.use(Avue);
 Vue.component('basicContainer', basicContainer);
 // 加载相关url地址
 Object.keys(urls).forEach(key => {
-    Vue.prototype[key] = urls[key]
+  Vue.prototype[key] = urls[key]
 });
 //加载过滤器
 Object.keys(filters).forEach(key => {
-    Vue.filter(key, filters[key])
+  Vue.filter(key, filters[key])
 });
 // 动态加载阿里云字体库
 iconfontVersion.forEach(ele => {
-    loadStyle(iconfontUrl.replace('$key', ele))
+  loadStyle(iconfontUrl.replace('$key', ele))
 });
 
 Vue.config.productionTip = false;
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app');
